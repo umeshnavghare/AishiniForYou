@@ -48,9 +48,26 @@
 <div style="text-align:center;">
   <h1>Hey Aishini Baby ❤️</h1>
   <p>I made something just for you...</p>
-  <button onclick="nextPage()">Click Me 💌</button>
-</div>
+<button id="surpriseBtn" onclick="nextPage()">Click Me 💌</button>
 
+<style>
+#surpriseBtn {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+#surpriseBtn.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+<script>
+  // Show button after 3 seconds
+  setTimeout(() => {
+    document.getElementById("surpriseBtn").classList.add("show");
+  }, 3000);
+</script>
 <script>
   function nextPage() {
     window.location.href = "Page2.html";
