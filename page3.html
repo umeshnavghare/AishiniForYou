@@ -1,8 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <style>
+.floating {
+  position: absolute;
+  font-size: 24px;
+  animation: floatUp linear infinite;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh); /* start from bottom */
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh); /* go above screen */
+    opacity: 0;
+  }
+}
+</style>
   <title> My Heart 💖</title>
 </head>
+  <script>
+// emojis we want to float
+const elements = ["❤️", "🌹"];
+
+// run every 500ms
+setInterval(() => {
+
+  // create new element
+  let el = document.createElement("div");
+
+  // randomly pick heart or rose
+  el.innerHTML = elements[Math.floor(Math.random() * elements.length)];
+
+  // apply class
+  el.className = "floating";
+
+  // random horizontal position
+  el.style.left = Math.random() * 100 + "vw";
+
+  // random speed (animation duration)
+  el.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+  // add to page
+  document.body.appendChild(el);
+
+  // remove after animation ends (cleanup)
+  setTimeout(() => el.remove(), 6000);
+
+}, 500);
+</script>
 <body style="text-align:center; background:#fff0f5; font-family:sans-serif;">
 
 <h2>Listen This 🎶</h2>
