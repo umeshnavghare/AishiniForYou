@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hey Baby ❤️</title>
+  <title> Hey Aishini Baby ❤️</title>
+
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       background: linear-gradient(to right, #ff9a9e, #fecfef);
       display: flex;
       justify-content: center;
@@ -20,90 +21,86 @@
       color: white;
     }
 
-    button {
+    p {
+      color: white;
+      font-size: 18px;
+    }
+
+    /* Button Style */
+    #surpriseBtn {
       padding: 15px 30px;
       font-size: 18px;
       border: none;
       border-radius: 25px;
-      background: #ff4d6d;
+      background: linear-gradient(45deg, #ff4d6d, #ff99ac);
       color: white;
       cursor: pointer;
       margin-top: 20px;
+
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease;
     }
 
-    .heart {
+    #surpriseBtn.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Floating Hearts */
+    .floating {
       position: absolute;
-      color: red;
-      animation: float 5s infinite;
+      font-size: 24px;
+      animation: floatUp linear infinite;
+      pointer-events: none;
+      filter: drop-shadow(0 0 8px pink);
     }
 
-    @keyframes float {
-      0% { transform: translateY(100vh); }
-      100% { transform: translateY(-10vh); }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
     }
   </style>
 </head>
+
 <body>
 
 <div style="text-align:center;">
   <h1>Hey Aishini Baby ❤️</h1>
-  <p>I made something just for you...</p>
-<button id="surpriseBtn" onclick="nextPage()">Click Me 💌</button>
+  <p id="introText">Wait for it... ❤️</p>
+  <button id="surpriseBtn" onclick="nextPage()">Click Me 💌</button>
+</div>
 
-<style>
-#surpriseBtn {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1s ease;
-}
-
-#surpriseBtn.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-</style>
 <script>
-  // Show button after 3 seconds
+  // Show button + change text after 3 seconds
   setTimeout(() => {
+    document.getElementById("introText").innerText = "I made something just for you...";
     document.getElementById("surpriseBtn").classList.add("show");
   }, 3000);
-</script>
-<script>
+
+  // Navigation (make sure file name is correct)
   function nextPage() {
-    window.location.href = "Page2.html";
+    window.location.href = "page2.html";
   }
 
-  <style>
-.floating {
-  position: absolute;
-  font-size: 24px;
-  animation: floatUp linear infinite;
-  pointer-events: none;
-}
+  // Floating hearts animation
+  setInterval(() => {
+    let el = document.createElement("div");
+    el.innerHTML = "❤️";
+    el.className = "floating";
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.animationDuration = (3 + Math.random() * 2) + "s";
 
-@keyframes floatUp {
-  0% {
-    transform: translateY(100vh) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-10vh) scale(1.5);
-    opacity: 0;
-  }
-}
-</style>
+    document.body.appendChild(el);
 
-  // Generate floating hearts
-setInterval(() => {
-  let el = document.createElement("div");
-  el.innerHTML = "❤️";
-  el.className = "floating";
-  el.style.left = Math.random() * 100 + "vw";
-  el.style.animationDuration = (3 + Math.random() * 2) + "s";
-  document.body.appendChild(el);
-
-  setTimeout(() => el.remove(), 5000);
-}, 400);
+    setTimeout(() => el.remove(), 5000);
+  }, 400);
 </script>
 
 </body>
