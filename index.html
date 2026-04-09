@@ -73,16 +73,37 @@
     window.location.href = "Page2.html";
   }
 
-  // Generate floating hearts
-  setInterval(() => {
-    let heart = document.createElement("div");
-    heart.innerHTML = "❤️";
-    heart.className = "heart";
-    heart.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(heart);
+  <style>
+.floating {
+  position: absolute;
+  font-size: 24px;
+  animation: floatUp linear infinite;
+  pointer-events: none;
+}
 
-    setTimeout(() => heart.remove(), 6000);
-  }, 400);
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.5);
+    opacity: 0;
+  }
+}
+</style>
+
+  // Generate floating hearts
+setInterval(() => {
+  let el = document.createElement("div");
+  el.innerHTML = "❤️";
+  el.className = "floating";
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.animationDuration = (3 + Math.random() * 2) + "s";
+  document.body.appendChild(el);
+
+  setTimeout(() => el.remove(), 5000);
+}, 400);
 </script>
 
 </body>
